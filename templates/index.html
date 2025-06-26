@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Risk Predictor</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            padding: 30px;
+            margin: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: linear-gradient(to bottom right, #ffffff, #f0f8ff);
+            padding: 40px 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        h2, h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        h2 {
+            font-size: 32px;
+            color: #6a1b9a;
+        }
+        h3 {
+            color: #1e88e5;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+            color: #444;
+        }
+        select, input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background-color: #fefefe;
+            transition: all 0.3s ease-in-out;
+        }
+        select:focus, input:focus {
+            border-color: #8e24aa;
+            box-shadow: 0 0 8px rgba(142, 36, 170, 0.3);
+            outline: none;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background: linear-gradient(to right, #4a00e0, #8e2de2);
+        }
+        .results, .lime-container {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(to right, #d7d2cc, #304352);
+            color: white;
+            border-radius: 14px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+        }
+        .results h3, .lime-container h3 {
+            color: #fff176;
+        }
+        .high { color: #ef5350; font-weight: bold; }
+        .medium { color: #ffb300; font-weight: bold; }
+        .low { color: #66bb6a; font-weight: bold; }
+        ul { padding-left: 20px; }
+        .lime-container div {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 2px dashed #fff9c4;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+        }
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 10px;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔮 Customer Churn Risk Predictor</h2>
+        <form method="post" action="/predict">
+            <div class="form-group"><label for="tenure">📅 Tenure</label><input type="number" id="tenure" name="tenure" required></div>
+            <div class="form-group"><label for="MonthlyCharges">💵 Monthly Charges</label><input type="number" id="MonthlyCharges" name="MonthlyCharges" required></div>
+            <div class="form-group"><label for="TotalCharges">💰 Total Charges</label><input type="number" id="TotalCharges" name="TotalCharges" required></div>
+            <div class="form-group"><label for="Contract">Contract</label><select id="Contract" name="Contract" required><option>Month-to-month</option><option>One year</option><option>Two year</option></select></div>
+            <div class="form-group"><label for="TechSupport">Tech Support</label><select id="TechSupport" name="TechSupport" required><option>No</option><option>Yes</option><option>No internet service</option></select></div>
+            <div class="form-group"><label for="OnlineSecurity">Online Security</label><select id="OnlineSecurity" name="OnlineSecurity" required><option>No</option><option>Yes</option><option>No internet service</option></select></div>
+            <div class="form-group"><label for="InternetService">Internet Service</label><select id="InternetService" name="InternetService" required><option>Fiber optic</option><option>DSL</option><option>No</option></select></div>
+            <div class="form-group"><label for="PaymentMethod">Payment Method</label><select id="PaymentMethod" name="PaymentMethod" required><option>Electronic check</option><option>Mailed check</option><option>Bank transfer (automatic)</option><option>Credit card (automatic)</option></select></div>
+            <div class="form-group"><label for="DeviceProtection">Device Protection</label><select id="DeviceProtection" name="DeviceProtection" required><option>No</option><option>Yes</option><option>No internet service</option></select></div>
+            <div class="form-group"><label for="OnlineBackup">Online Backup</label><select id="OnlineBackup" name="OnlineBackup" required><option>No</option><option>Yes</option><option>No internet service</option></select></div>
+            <div class="form-group"><label for="StreamingMovies">Streaming Movies</label><select id="StreamingMovies" name="StreamingMovies" required><option>No</option><option>Yes</option><option>No internet service</option></select></div>
+            <div class="form-group"><label for="StreamingTV">Streaming TV</label><select id="StreamingTV" name="StreamingTV" required><option>No</option><option>Yes</option><option>No internet service</option></select></div>
+            <input type="submit" value="🔍 Predict Risk Score">
+        </form>
+
+        {% if prediction %}
+        <div class="results">
+            <h3>Risk Prediction: {{ prediction }}%</h3>
+            <p class="{{ risk_level|lower }}">Risk Level: {{ risk_level }}</p>
+        </div>
+
+        <div class="lime-container">
+            <h3>🔍 LIME Explanation</h3>
+            {{ lime_html | safe }}
+        </div>
+
+        <div class="lime-container">
+            <h3>📊 SHAP Force Plot</h3>
+            <iframe src="{{ shap_plot }}"></iframe>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

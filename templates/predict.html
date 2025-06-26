@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Prediction Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .result-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .result-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .risk-score {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .risk-high { color: #dc3545; }
+        .risk-medium { color: #fd7e14; }
+        .risk-low { color: #28a745; }
+        .actions {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .actions ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .explanation-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .explanation-section h3 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .lime-explanation {
+            margin: 20px 0;
+        }
+        .shap-explanation {
+            margin: 20px 0;
+            min-height: 200px;
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Churn Prediction Results</h1>
+        
+        <div class="results-grid">
+            <div class="result-card">
+                <h3>ML Model Prediction</h3>
+                <div class="risk-score risk-{{ risk_category.lower() }}">
+                    {{ risk_score }}%
+                </div>
+                <p><strong>Risk Category:</strong> 
+                    <span class="risk-{{ risk_category.lower() }}">{{ risk_category }}</span>
+                </p>
+                
+                <div class="actions">
+                    <h4>Recommended Actions:</h4>
+                    <ul>
+                        {% for action in retention_actions %}
+                        <li>{{ action }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="result-card">
+                <h3>Rule-Based Assessment</h3>
+                <p><strong>Risk Category:</strong> 
+                    <span class="risk-{{ rule_based_category.lower() }}">{{ rule_based_category }}</span>
+                </p>
+                <p>This assessment is based on predefined business rules and customer behavior patterns.</p>
+            </div>
+        </div>
+        
+        <div class="explanation-section">
+            <h3>Model Explanations</h3>
+            
+            <div class="lime-explanation">
+                <h4>LIME Explanation (Local Feature Importance)</h4>
+                <div style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+                    {{ lime_html|safe }}
+                </div>
+            </div>
+            
+            <div class="shap-explanation">
+                <h4>SHAP Force Plot (Feature Contributions)</h4>
+                <div style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+                    <iframe src="/static/shap_force_plot.html" 
+                            width="100%" 
+                            height="400" 
+                            frameborder="0"
+                            style="border-radius: 5px;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        
+        <a href="/" class="back-button">Make Another Prediction</a>
+    </div>
+</body>
+</html>
