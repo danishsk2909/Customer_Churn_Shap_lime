@@ -1,0 +1,36 @@
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+import pickle
+
+# Load data
+df = pd.read_csv("Telco-Customer-Churn.csv")
+
+# Clean
+df = df[df['TotalCharges'] != ' ']
+df['TotalCharges'] = df['TotalCharges'].astype(float)
+df['Churn'] = df['Churn'].map({'Yes': 1, 'No': 0})
+
+features = ['tenure', 'MonthlyCharges', 'TotalCharges',
+            'Contract', 'TechSupport', 'OnlineSecurity',
+            'InternetService', 'PaymentMethod',
+            'DeviceProtection', 'OnlineBackup',
+            'StreamingMovies', 'StreamingTV']
+
+X = df[features]
+y = df['Churn']
+
+# Encode categorical
+for col in X.select_dtypes(include='object').columns:
+    le = LabelEncoder()
+    X[col] = le.fit_transform(X[col])
+
+# Train
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Save compatible model
+with open("RFC_Model.pkl", "wb") as f:
+    pickle.dump(model, f)

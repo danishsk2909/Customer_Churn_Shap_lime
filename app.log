@@ -1,0 +1,126 @@
+2025-06-27 01:51:17,012 - __main__ - INFO - Model loaded successfully
+2025-06-27 01:51:17,292 - __main__ - INFO - Training data loaded successfully
+2025-06-27 01:51:17,403 - __main__ - INFO - Label encoder created for 'Contract' with 3 classes
+2025-06-27 01:51:17,405 - __main__ - INFO - Label encoder created for 'TechSupport' with 3 classes
+2025-06-27 01:51:17,408 - __main__ - INFO - Label encoder created for 'OnlineSecurity' with 3 classes
+2025-06-27 01:51:17,410 - __main__ - INFO - Label encoder created for 'InternetService' with 3 classes
+2025-06-27 01:51:17,411 - __main__ - INFO - Label encoder created for 'PaymentMethod' with 4 classes
+2025-06-27 01:51:17,412 - __main__ - INFO - Label encoder created for 'DeviceProtection' with 3 classes
+2025-06-27 01:51:17,417 - __main__ - INFO - Label encoder created for 'OnlineBackup' with 3 classes
+2025-06-27 01:51:17,419 - __main__ - INFO - Label encoder created for 'StreamingMovies' with 3 classes
+2025-06-27 01:51:17,421 - __main__ - INFO - Label encoder created for 'StreamingTV' with 3 classes
+2025-06-27 01:51:17,459 - __main__ - INFO - Application initialized successfully
+2025-06-27 01:51:17,516 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-27 01:51:17,518 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-27 01:51:17,522 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 01:51:27,906 - __main__ - INFO - Model loaded successfully
+2025-06-27 01:51:28,022 - __main__ - INFO - Training data loaded successfully
+2025-06-27 01:51:28,072 - __main__ - INFO - Label encoder created for 'Contract' with 3 classes
+2025-06-27 01:51:28,075 - __main__ - INFO - Label encoder created for 'TechSupport' with 3 classes
+2025-06-27 01:51:28,077 - __main__ - INFO - Label encoder created for 'OnlineSecurity' with 3 classes
+2025-06-27 01:51:28,080 - __main__ - INFO - Label encoder created for 'InternetService' with 3 classes
+2025-06-27 01:51:28,082 - __main__ - INFO - Label encoder created for 'PaymentMethod' with 4 classes
+2025-06-27 01:51:28,084 - __main__ - INFO - Label encoder created for 'DeviceProtection' with 3 classes
+2025-06-27 01:51:28,086 - __main__ - INFO - Label encoder created for 'OnlineBackup' with 3 classes
+2025-06-27 01:51:28,088 - __main__ - INFO - Label encoder created for 'StreamingMovies' with 3 classes
+2025-06-27 01:51:28,091 - __main__ - INFO - Label encoder created for 'StreamingTV' with 3 classes
+2025-06-27 01:51:28,138 - __main__ - INFO - Application initialized successfully
+2025-06-27 01:51:28,178 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 01:51:28,363 - werkzeug - INFO -  * Debugger PIN: 111-470-293
+2025-06-27 01:51:51,663 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 01:51:51] "GET / HTTP/1.1" 200 -
+2025-06-27 01:51:51,941 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 01:51:51] "[35m[1mGET /static/style.css HTTP/1.1[0m" 500 -
+2025-06-27 01:52:10,266 - __main__ - INFO - LIME explanation generated successfully
+2025-06-27 01:52:10,527 - __main__ - WARNING - Using fallback SHAP syntax
+2025-06-27 01:52:10,539 - __main__ - ERROR - SHAP explanation error: In v0.20, force plot now requires the base value as the first parameter! Try shap.plots.force(explainer.expected_value, shap_values) or for multi-output models try shap.plots.force(explainer.expected_value[0], shap_values[..., 0]).
+2025-06-27 01:52:10,539 - __main__ - WARNING - SHAP explanation failed: Failed to generate SHAP explanation: In v0.20, force plot now requires the base value as the first parameter! Try shap.plots.force(explainer.expected_value, shap_values) or for multi-output models try shap.plots.force(explainer.expected_value[0], shap_values[..., 0]).
+2025-06-27 01:52:10,590 - __main__ - ERROR - Unexpected error: predict.html
+Traceback (most recent call last):
+  File "c:\Users\saima\Desktop\ssss\app.py", line 51, in decorated_function
+    return f(*args, **kwargs)
+  File "c:\Users\saima\Desktop\ssss\app.py", line 406, in predict
+    return render_template("predict.html",
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: predict.html
+
+2025-06-27 01:52:10,730 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 01:52:10] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+2025-06-27 01:52:11,580 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 01:52:11] "[36mGET /predict?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-06-27 01:52:11,581 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 01:52:11] "[36mGET /predict?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-06-27 01:52:11,683 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 01:52:11] "GET /predict?__debugger__=yes&cmd=resource&f=console.png&s=e4kWGV1RBGCIRFVyaGe0 HTTP/1.1" 200 -
+2025-06-27 01:52:11,770 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 01:52:11] "[36mGET /predict?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-06-27 01:54:28,554 - __main__ - INFO - Model loaded successfully
+2025-06-27 01:54:28,594 - __main__ - INFO - Training data loaded successfully
+2025-06-27 01:54:28,603 - __main__ - INFO - Label encoder created for 'Contract' with 3 classes
+2025-06-27 01:54:28,604 - __main__ - INFO - Label encoder created for 'TechSupport' with 3 classes
+2025-06-27 01:54:28,606 - __main__ - INFO - Label encoder created for 'OnlineSecurity' with 3 classes
+2025-06-27 01:54:28,606 - __main__ - INFO - Label encoder created for 'InternetService' with 3 classes
+2025-06-27 01:54:28,607 - __main__ - INFO - Label encoder created for 'PaymentMethod' with 4 classes
+2025-06-27 01:54:28,608 - __main__ - INFO - Label encoder created for 'DeviceProtection' with 3 classes
+2025-06-27 01:54:28,610 - __main__ - INFO - Label encoder created for 'OnlineBackup' with 3 classes
+2025-06-27 01:54:28,612 - __main__ - INFO - Label encoder created for 'StreamingMovies' with 3 classes
+2025-06-27 01:54:28,613 - __main__ - INFO - Label encoder created for 'StreamingTV' with 3 classes
+2025-06-27 01:54:28,637 - __main__ - INFO - Application initialized successfully
+2025-06-27 01:54:28,688 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-27 01:54:28,688 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-27 01:54:28,691 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 01:54:33,698 - __main__ - INFO - Model loaded successfully
+2025-06-27 01:54:33,733 - __main__ - INFO - Training data loaded successfully
+2025-06-27 01:54:33,736 - __main__ - INFO - Label encoder created for 'Contract' with 3 classes
+2025-06-27 01:54:33,737 - __main__ - INFO - Label encoder created for 'TechSupport' with 3 classes
+2025-06-27 01:54:33,739 - __main__ - INFO - Label encoder created for 'OnlineSecurity' with 3 classes
+2025-06-27 01:54:33,741 - __main__ - INFO - Label encoder created for 'InternetService' with 3 classes
+2025-06-27 01:54:33,743 - __main__ - INFO - Label encoder created for 'PaymentMethod' with 4 classes
+2025-06-27 01:54:33,744 - __main__ - INFO - Label encoder created for 'DeviceProtection' with 3 classes
+2025-06-27 01:54:33,745 - __main__ - INFO - Label encoder created for 'OnlineBackup' with 3 classes
+2025-06-27 01:54:33,747 - __main__ - INFO - Label encoder created for 'StreamingMovies' with 3 classes
+2025-06-27 01:54:33,748 - __main__ - INFO - Label encoder created for 'StreamingTV' with 3 classes
+2025-06-27 01:54:33,771 - __main__ - INFO - Application initialized successfully
+2025-06-27 01:54:33,787 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 01:54:33,791 - werkzeug - INFO -  * Debugger PIN: 111-470-293
+2025-06-27 01:55:29,484 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 01:55:29] "GET / HTTP/1.1" 200 -
+2025-06-27 01:55:29,942 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 01:55:29] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-06-27 01:55:37,118 - __main__ - INFO - LIME explanation generated successfully
+2025-06-27 01:55:37,414 - __main__ - WARNING - Using fallback SHAP syntax
+2025-06-27 01:55:37,416 - __main__ - ERROR - SHAP explanation error: In v0.20, force plot now requires the base value as the first parameter! Try shap.plots.force(explainer.expected_value, shap_values) or for multi-output models try shap.plots.force(explainer.expected_value[0], shap_values[..., 0]).
+2025-06-27 01:55:37,416 - __main__ - WARNING - SHAP explanation failed: Failed to generate SHAP explanation: In v0.20, force plot now requires the base value as the first parameter! Try shap.plots.force(explainer.expected_value, shap_values) or for multi-output models try shap.plots.force(explainer.expected_value[0], shap_values[..., 0]).
+2025-06-27 01:55:37,488 - __main__ - ERROR - Unexpected error: predict.html
+Traceback (most recent call last):
+  File "c:\Users\saima\Desktop\ssss\app.py", line 51, in decorated_function
+    return f(*args, **kwargs)
+  File "c:\Users\saima\Desktop\ssss\app.py", line 406, in predict
+    return render_template("predict.html",
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\saima\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: predict.html
+
+2025-06-27 01:55:37,494 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 01:55:37] "POST /predict HTTP/1.1" 200 -
+2025-06-27 01:55:39,780 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 01:55:39] "GET / HTTP/1.1" 200 -
+2025-06-27 01:55:39,857 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 01:55:39] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2025-06-27 01:57:17,291 - werkzeug - INFO -  * Detected change in 'c:\\Users\\saima\\Desktop\\ssss\\app.py', reloading
+2025-06-27 01:57:20,591 - werkzeug - INFO -  * Restarting with stat
